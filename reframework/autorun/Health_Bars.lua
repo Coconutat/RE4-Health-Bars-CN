@@ -103,7 +103,7 @@ re.on_draw_ui(function()
 	local changed = false;
 	local cached_config = config.current_config;
 
-	if imgui.button("Health Bars v" .. config.current_config.version) then
+	if imgui.button("Health Bars v" .. config.current_config.version .. "简体翻译 By Coconutat") then
 		customization_menu.is_opened = not customization_menu.is_opened;
 	end
 

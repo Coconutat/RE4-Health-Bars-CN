@@ -52,10 +52,10 @@ function this.draw(bar_name, bar)
 	local index = 1;
 
 	if imgui.tree_node(bar_name) then
-		changed, bar.visibility = imgui.checkbox("Visible" , bar.visibility);
+		changed, bar.visibility = imgui.checkbox("是否可见" , bar.visibility);
 		bar_changed = bar_changed or changed;
 
-		if imgui.tree_node("Settings") then
+		if imgui.tree_node("设置") then
 			local fill_direction_index = utils.table.find_index(directions, bar.settings.fill_direction);
 			changed, fill_direction_index = imgui.combo("Fill Type", fill_direction_index, directions);
 
@@ -68,7 +68,7 @@ function this.draw(bar_name, bar)
 			imgui.tree_pop();
 		end
 
-		if imgui.tree_node("Offset") then
+		if imgui.tree_node("偏移") then
 			changed, bar.offset.x = imgui.drag_float("X",
 				bar.offset.x, 0.1, -screen.width, screen.width, "%.1f");
 			bar_changed = bar_changed or changed;
@@ -80,12 +80,12 @@ function this.draw(bar_name, bar)
 			imgui.tree_pop();
 		end
 
-		if imgui.tree_node("Size") then
-			changed, bar.size.width = imgui.drag_float("Width",
+		if imgui.tree_node("大小") then
+			changed, bar.size.width = imgui.drag_float("宽",
 				bar.size.width, 0.1, 0, screen.width, "%.1f");
 			bar_changed = bar_changed or changed;
 
-			changed, bar.size.height = imgui.drag_float("Height",
+			changed, bar.size.height = imgui.drag_float("高",
 				bar.size.height, 0.1, 0, screen.height, "%.1f");
 			bar_changed = bar_changed or changed;
 
@@ -93,20 +93,20 @@ function this.draw(bar_name, bar)
 		end
 
 		if imgui.tree_node("Outline") then
-			changed, bar.outline.visibility = imgui.checkbox("Visible"
+			changed, bar.outline.visibility = imgui.checkbox("是否可见"
 				, bar.outline.visibility);
 			bar_changed = bar_changed or changed;
 
-			changed, bar.outline.thickness = imgui.drag_float("Thickness",
+			changed, bar.outline.thickness = imgui.drag_float("厚度",
 				bar.outline.thickness, 0.1, 0, screen.width, "%.1f");
 			bar_changed = bar_changed or changed;
 
-			changed, bar.outline.offset = imgui.drag_float("Offset",
+			changed, bar.outline.offset = imgui.drag_float("偏移",
 				bar.outline.offset, 0.1, -screen.height, screen.height, "%.1f");
 			bar_changed = bar_changed or changed;
 
 
-			changed, index = imgui.combo("Style",
+			changed, index = imgui.combo("样式",
 				utils.table.find_index(outline_styles, bar.outline.style),
 				outline_styles);
 			bar_changed = bar_changed or changed;
@@ -118,8 +118,8 @@ function this.draw(bar_name, bar)
 			imgui.tree_pop();
 		end
 
-		if imgui.tree_node("Colors") then
-			if imgui.tree_node("Foreground") then
+		if imgui.tree_node("颜色") then
+			if imgui.tree_node("前景") then
 				changed, bar.colors.foreground = imgui.color_picker_argb("", bar.colors.foreground,
 					customization_menu.color_picker_flags);
 				bar_changed = bar_changed or changed;
@@ -127,7 +127,7 @@ function this.draw(bar_name, bar)
 				imgui.tree_pop();
 			end
 
-			if imgui.tree_node("Background") then
+			if imgui.tree_node("背景") then
 				changed, bar.colors.background = imgui.color_picker_argb("", bar.colors.background,
 					customization_menu.color_picker_flags);
 				bar_changed = bar_changed or changed;
@@ -135,7 +135,7 @@ function this.draw(bar_name, bar)
 				imgui.tree_pop();
 			end
 
-			if imgui.tree_node("Outline") then
+			if imgui.tree_node("轮廓线") then
 				changed, bar.colors.outline = imgui.color_picker_argb("", bar.colors.outline,
 					customization_menu.color_picker_flags);
 				bar_changed = bar_changed or changed;
