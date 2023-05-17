@@ -34,6 +34,20 @@ local draw = draw;
 local Vector2f = Vector2f;
 local reframework = reframework;
 local os = os;
+local FONT_NAME = "SourceHanSansCN-Normal.otf"
+local FONT_SIZE = 18
+
+local CHINESE_GLYPH_RANGES = {
+    0x0020, 0x00FF, -- Basic Latin + Latin Supplement
+    0x2000, 0x206F, -- General Punctuation
+    0x3000, 0x30FF, -- CJK Symbols and Punctuations, Hiragana, Katakana
+    0x31F0, 0x31FF, -- Katakana Phonetic Extensions
+    0xFF00, 0xFFEF, -- Half-width characters
+    0x4e00, 0x9FAF, -- CJK Ideograms
+    0,
+}
+
+local font = imgui.load_font(FONT_NAME, FONT_SIZE, CHINESE_GLYPH_RANGES);
 
 local outline_styles = {"Inside", "Center", "Outside"};
 local directions = {"Left to Right", "Right to Left", "Top to Bottom", "Bottom to Top"};
@@ -50,6 +64,7 @@ function this.draw(bar_name, bar)
 	local bar_changed = false;
 	local changed = false;
 	local index = 1;
+	imgui.push_font(font);
 
 	if imgui.tree_node(bar_name) then
 		changed, bar.visibility = imgui.checkbox("是否可见" , bar.visibility);
@@ -92,7 +107,7 @@ function this.draw(bar_name, bar)
 			imgui.tree_pop();
 		end
 
-		if imgui.tree_node("Outline") then
+		if imgui.tree_node("轮廓") then
 			changed, bar.outline.visibility = imgui.checkbox("是否可见"
 				, bar.outline.visibility);
 			bar_changed = bar_changed or changed;

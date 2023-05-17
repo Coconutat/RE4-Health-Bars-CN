@@ -34,6 +34,21 @@ local draw = draw;
 local Vector2f = Vector2f;
 local reframework = reframework;
 local os = os;
+local FONT_NAME = "SourceHanSansCN-Normal.otf"
+local FONT_SIZE = 18
+
+local CHINESE_GLYPH_RANGES = {
+    0x0020, 0x00FF, -- Basic Latin + Latin Supplement
+    0x2000, 0x206F, -- General Punctuation
+    0x3000, 0x30FF, -- CJK Symbols and Punctuations, Hiragana, Katakana
+    0x31F0, 0x31FF, -- Katakana Phonetic Extensions
+    0xFF00, 0xFFEF, -- Half-width characters
+    0x4e00, 0x9FAF, -- CJK Ideograms
+    0,
+}
+
+local font = imgui.load_font(FONT_NAME, FONT_SIZE, CHINESE_GLYPH_RANGES);
+
 
 local include_names = {
 	current_value = "当前值",
@@ -43,6 +58,7 @@ local include_names = {
 function this.draw(label_name, label)
 	local label_changed = false;
 	local changed = false;
+	imgui.push_font(font);
 
 	if imgui.tree_node(label_name) then
 		changed, label.visibility = imgui.checkbox("是否可见", label.visibility);
@@ -86,7 +102,7 @@ function this.draw(label_name, label)
 		end
 
 		if imgui.tree_node("阴影") then
-			changed, label.shadow.visibility = imgui.checkbox("Visible", label.shadow.visibility);
+			changed, label.shadow.visibility = imgui.checkbox("是否可见", label.shadow.visibility);
 			label_changed = label_changed or changed;
 
 			if imgui.tree_node("偏移") then

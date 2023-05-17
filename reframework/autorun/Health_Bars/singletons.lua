@@ -30,7 +30,7 @@ local imgui = imgui;
 local draw = draw;
 local Vector2f = Vector2f;
 local reframework = reframework;
-local os = os;
+local os = os
 
 local character_manager_name = "chainsaw.CharacterManager";
 local scene_manager_name = "via.SceneManager";

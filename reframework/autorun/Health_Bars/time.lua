@@ -30,6 +30,7 @@ local Vector2f = Vector2f;
 local reframework = reframework;
 local os = os;
 
+
 this.total_elapsed_script_seconds = 0;
 
 function this.update_script_time()

@@ -30,6 +30,20 @@ local reframework = reframework;
 local os = os;
 local ValueType = ValueType;
 local package = package;
+local FONT_NAME = "SourceHanSansCN-Normal.otf"
+local FONT_SIZE = 18
+
+local CHINESE_GLYPH_RANGES = {
+    0x0020, 0x00FF, -- Basic Latin + Latin Supplement
+    0x2000, 0x206F, -- General Punctuation
+    0x3000, 0x30FF, -- CJK Symbols and Punctuations, Hiragana, Katakana
+    0x31F0, 0x31FF, -- Katakana Phonetic Extensions
+    0xFF00, 0xFFEF, -- Half-width characters
+    0x4e00, 0x9FAF, -- CJK Ideograms
+    0,
+}
+
+local font = imgui.load_font(FONT_NAME, FONT_SIZE, CHINESE_GLYPH_RANGES)
 
 local time = require("Health_Bars.time");
 local drawing = require("Health_Bars.drawing");
@@ -102,6 +116,7 @@ end
 re.on_draw_ui(function()
 	local changed = false;
 	local cached_config = config.current_config;
+	imgui.push_font(font);
 
 	if imgui.button("Health Bars v" .. config.current_config.version .. "简体翻译 By Coconutat") then
 		customization_menu.is_opened = not customization_menu.is_opened;
