@@ -35,3 +35,12 @@ You can support me by donating! I would appreciate it! But anyway, thank you for
   <img alt="Qries" src="https://panels.twitch.tv/panel-48897356-image-c2fcf835-87e4-408e-81e8-790789c7acbc">
 </a>
 
+# How to compile ?
+You need: 
++ [lua-amalg](https://github.com/siffiejoe/lua-amalg)    
++ [Lua 5.4+](https://www.lua.org/)  
+Use this software to compile the all files to one file.  
+Using commands:  
+`"D:\Programs\Lua Amalg\lua54.exe" amalg.lua -o Health_Bars_precompiled.lua -d -s "Your Path!!!!" Health_Bars.bar_customization Health_Bars.config Health_Bars.customization_menu Health_Bars.drawing Health_Bars.enemy_handler Health_Bars.gui_handler Health_Bars.label_customization Health_Bars.player_handler Health_Bars.screen Health_Bars.singletons Health_Bars.time Health_Bars.utils`  
+Thanks support by [GreenComfyTea](https://github.com/GreenComfyTea).  
+Thanks to [GreenComfyTea](https://github.com/GreenComfyTea) for this amazing project.  
