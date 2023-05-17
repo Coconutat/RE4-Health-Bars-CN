@@ -1,5 +1,10 @@
 # "Health Bars" Mod for Resident Evil 4 Remake
 
+Language：  
+**English** | [简体中文](README_CN.md) 
+
+***
+
 Mod for Resident Evil 4 Remake that draws health bars on top of enemies' heads.
 
 ![health_bars_2](https://user-images.githubusercontent.com/30152047/226180919-2ddaacc2-f8c7-4688-8ec0-1958da87f91a.png)
